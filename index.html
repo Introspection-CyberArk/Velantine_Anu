@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Anushka ❤️</title>
+
+<style>
+:root {
+    --pink: #ff4b7d;
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+}
+
+/* Card animation */
+.card {
+    background: white;
+    padding: 32px 26px;
+    border-radius: 20px;
+    text-align: center;
+    width: 340px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    animation: fadeUp 1.2s ease-out;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+h1 {
+    color: var(--pink);
+    margin-bottom: 8px;
+}
+
+p {
+    font-size: 17px;
+    line-height: 1.5;
+}
+
+/* Buttons */
+button {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 40px;
+    font-size: 16px;
+    margin: 12px 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:active {
+    transform: scale(0.92);
+}
+
+#yes {
+    background: var(--pink);
+    color: white;
+    box-shadow: 0 8px 20px rgba(255,75,125,0.5);
+}
+
+#no {
+    background: #ddd;
+    position: absolute;
+}
+
+/* Floating hearts */
+.heart {
+    position: absolute;
+    font-size: 22px;
+    animation: floatHeart 4s ease-in infinite;
+}
+
+@keyframes floatHeart {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-700px) scale(1.6); opacity: 0; }
+}
+
+/* Love reveal animation */
+.love {
+    animation: popLove 0.9s ease-out;
+}
+
+@keyframes popLove {
+    0% { transform: scale(0.6); opacity: 0; }
+    60% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+    <h1>Anushka ❤️</h1>
+    <p>You make my world brighter every single day ✨</p>
+    <p>Will you be my Valentine? 🌹</p>
+
+    <button id="yes" onclick="yesClicked()">YES 💖</button>
+    <button id="no" ontouchstart="moveNo()" onmouseover="moveNo()">NO 😜</button>
+</div>
+
+<script>
+function moveNo() {
+    const no = document.getElementById("no");
+    const padding = 60;
+    no.style.left = Math.random() * (window.innerWidth - padding) + "px";
+    no.style.top = Math.random() * (window.innerHeight - padding) + "px";
+}
+
+function yesClicked() {
+    document.getElementById("card").innerHTML = `
+        <h1 class="love">Anushka 😍💖</h1>
+        <p class="love" style="font-size:22px; font-weight:bold; color:#ff4b7d;">
+            I Love You Too Motu ❤️
+        </p>
+        <p class="love">Forever us 💫</p>
+    `;
+    createHearts();
+}
+
+function createHearts() {
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.bottom = "-20px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 4000);
+    }, 220);
+}
+</script>
+
+</body>
+</html>
